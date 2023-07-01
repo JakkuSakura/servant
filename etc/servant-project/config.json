@@ -1,0 +1,7 @@
+{
+  "user": "example",
+  "log": "/home/example/log",
+  "dir": "/home/example/bin",
+  "config": "/home/example/etc"
+
+}

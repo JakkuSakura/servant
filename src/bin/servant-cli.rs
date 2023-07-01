@@ -1,7 +1,6 @@
 use clap::{Parser, Subcommand};
 use common_libs::*;
-use servant::model::Project;
-use servant::{list_projects, load_project};
+use servant::project::{list_projects, load_project};
 use std::path::{Path, PathBuf};
 
 #[derive(Subcommand)]
@@ -74,23 +73,17 @@ struct Cli {
     #[clap(short, long, default_value = "etc")]
     config: PathBuf,
 }
-pub fn print_project(project: &Project) -> Result<()> {
-    println!("Project: {}", project.name);
-    for s in &project.services {
-        println!("  Service: {}", s.service_name);
-    }
-    Ok(())
-}
+
 pub async fn print_projects(config: PathBuf, project: Option<String>) -> Result<()> {
     match project {
         Some(project) => {
             let project = load_project(&config.join(Path::new(&project)))?;
-            print_project(&project)?;
+            project.print_project()?;
         }
         None => {
             let projects = list_projects(&config)?;
             for p in projects {
-                print_project(&p)?;
+                p.print_project()?;
             }
         }
     }
