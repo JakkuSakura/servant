@@ -1,0 +1,5 @@
+{
+    "log_level": "info",
+    "name": "example-service",
+    "addr": "localhost:18001"
+}

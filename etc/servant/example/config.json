@@ -1,8 +1,0 @@
-{
-    "log_level": "info",
-    "name": "example",
-    "service1": {
-        "host": "localhost",
-        "port": 18001
-    }
-}
